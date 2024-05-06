@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/data-siswa', function () {
-    return view('content.data-siswa');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/index', function(){
+    return view('content.index');
 });

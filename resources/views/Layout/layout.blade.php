@@ -1,127 +1,83 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web SPP SMA PGRI 3 Bandung</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> <!-- Use asset() to link to your CSS file -->
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        body {
-            overflow-x: hidden;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            padding-top: 58px; /* Add padding-top for fixed navbar */
-        }
+    <title>{{ $title ?? 'Default Title' }} | Aplikasi SPP</title>
 
-        /* Toggle Styles */
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-        #viewport {
-            padding-left: 250px;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-        }
+    <!-- CSS Select Picker -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        #content {
-            width: 100%;
-            position: relative;
-            margin-right: 0;
-        }
-
-        /* Sidebar Styles */
-
-        #sidebar {
-            z-index: 1000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            overflow-y: auto;
-            background: #37474F;
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-        }
-
-        #sidebar header {
-            background-color: #263238;
-            font-size: 20px;
-            line-height: 52px;
-            text-align: center;
-        }
-
-        #sidebar header a {
-            color: #fff;
-            display: block;
-            text-decoration: none;
-        }
-
-        #sidebar header a:hover {
-            color: #fff;
-        }
-
-        #sidebar .nav {}
-
-        #sidebar .nav a {
-            background: none;
-            border-bottom: 1px solid #455A64;
-            color: #CFD8DC;
-            font-size: 14px;
-            padding: 16px 24px;
-        }
-
-        #sidebar .nav a:hover {
-            background: none;
-            color: #ECEFF1;
-        }
-
-        #sidebar .nav a i {
-            margin-right: 16px;
-        }
-
-        /* Navbar Styles */
-
-        .navbar {
-            background-color: #fff;
-            z-index: 900; /* Ensure navbar is above sidebar */
-            position: fixed;
-            top: 0;
-            left: 250px; /* Same as sidebar width */
-            right: 0;
-        }
-
-        /* Separate Navbar Container */
-        .navbar-container {
-            padding-top: 58px; /* Adjust padding to avoid overlapping with navbar */
-        }
-    </style>
+    <!-- Custom styles for this template -->
+    <link href="/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        @include('Component.navbar') <!-- Include navbar blade file that contains sidebar and topbar -->
 
-<body>
-    <!-- Sidebar -->
-    <div id="sidebar">
-        @include('Component.navbar')
-    </div>
-    
-    <!-- Separate Navbar Container -->
-    <div class="navbar-container">
-        <!-- Main content container -->
-        <div class="content-container" id="viewport">
-            @yield('content')
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                @yield('content') <!-- Main content is yielded here where needed -->
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>&copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
         </div>
-        
-        @include('Component.footer')
+        <!-- End of Content Wrapper -->
     </div>
+    <!-- End of Page Wrapper -->
 
-    <script src="/js/bootstrap.js"></script>
+    <!-- Scroll to Top Button -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages -->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/datatables-demo.js"></script>
+
+    <!-- js select picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <script>
+        $(function() {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
 </body>
-
 </html>
