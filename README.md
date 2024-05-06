@@ -1,8 +1,11 @@
 Website SPP untuk tugas besar mata kuliah ISB-310 SISTEM INFORMASI BERBASIS WEB
 
 Anggota:
+
 162021008 - Sabrina Aziza Utami
+
 162021024 - Azzahra Candra Putri
+
 162021031 - Tri Rahayu Purwanti
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
