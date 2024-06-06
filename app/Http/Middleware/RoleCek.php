@@ -41,7 +41,7 @@ class RoleCek
             case 'bendahara':
                 return redirect()->route('bendahara-page');
             case 'kepsek':
-                return redirect()->route('kep_page');
+                return redirect()->route('kepsek-page');
             default:
                 return redirect('/');
         }

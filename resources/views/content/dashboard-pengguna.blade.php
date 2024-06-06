@@ -4,36 +4,63 @@
     <div class="container-fluid">
         <div class="d-flex flex-row align-items-center justify-content-between py-2">
             <h1 class="h3 mb-2 text-gray-800">Daftar Pengguna</h1>
-            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addModal">Tambah Data</button>
+            @if (in_array(Auth::user()->level, ['admin', 'bendahara']))
+                <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addModal">Tambah Data</button>
+            @endif
         </div>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Opsi:</div>
+                        <a class="dropdown-item" href="#">Cetak Data</a>
+                        <a class="dropdown-item" href="#">Import Data</a>
+                        <a class="dropdown-item" href="#">Export Data</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Kembalikan Data</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nama Pengguna</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($user as $user)
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->level }}</td>
-                                @if(auth()->user()->id != $user->id)
-                                <td>
-
-                                    <button class="btn btn-sm btn-primary" data-toggle="modal"
-                                        data-target="#editModal{{ $user->id }}"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger" data-toggle="modal"
-                                        data-target="#deleteModal{{ $user->id }}"><i class="fas fa-trash"></i></button>
-                                </td>
+                                <th scope="col">Nama Pengguna</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Level</th>
+                                @if (in_array(Auth::user()->level, ['admin', 'bendahara']))
+                                    <th scope="col">Action</th>
                                 @endif
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($user as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->level }}</td>
+                                    @if (auth()->user()->id != $user->id)
+                                        @if (in_array(Auth::user()->level, ['admin', 'bendahara']))
+                                            <td>
+
+                                                <button class="btn btn-sm btn-primary" data-toggle="modal"
+                                                    data-target="#editModal{{ $user->id }}"><i
+                                                        class="fas fa-edit"></i></button>
+                                                <button class="btn btn-sm btn-danger" data-toggle="modal"
+                                                    data-target="#deleteModal{{ $user->id }}"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        @endif
+                                </tr>
+                            @endif
 
                             <!-- Modal Edit User -->
                             <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1"
@@ -101,7 +128,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h4 class="modal-title">Hapus</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -121,59 +149,59 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal Add User -->
-    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Tambah Pengguna Baru</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ url('dashboard-pengguna-tambah') }}" method="post">
-                        @csrf
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="name">Nama</label>
-                                <input type="text" name="name" class="form-control" id="name"
-                                    placeholder="Enter Name" required>
+        <!-- Modal Add User -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Tambah Pengguna Baru</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url('dashboard-pengguna-tambah') }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="name">Nama</label>
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Enter Name" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                        placeholder="Enter Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password"
+                                        placeholder="Enter Password" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="level">Level</label>
+                                    <select name="level" class="form-select" required>
+                                        <option value="kepsek">Kepala Sekolah</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="bendahara">Bendahara</option>
+                                        <option value="siswa">Siswa</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="Enter Email" required>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
                             </div>
-                            <div class="col-12">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" class="form-control" id="password"
-                                    placeholder="Enter Password" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="level">Level</label>
-                                <select name="level" class="form-select" required>
-                                    <option value="kepsek">Kepala Sekolah</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="bendahara">Bendahara</option>
-                                    <option value="siswa">Siswa</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Tambah Pengguna</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

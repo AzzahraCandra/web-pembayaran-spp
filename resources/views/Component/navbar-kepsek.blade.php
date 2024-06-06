@@ -36,9 +36,9 @@
 
     {{-- <!-- Nav Item - Tunggakan -->
     <li class="nav-item">
-        <a class="nav-link" href="history-pembayaran">
+        <a class="nav-link" href="tunggakan">
             <i class="fas fa-fw fa-receipt"></i>
-            <span>History Pembayaran</span></a>
+            <span>Transaksi Tunggakan</span></a>
     </li> --}}
 
     <!-- Nav Item - Data pembayaran -->

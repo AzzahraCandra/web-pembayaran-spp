@@ -26,7 +26,7 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Total Pembayaran</div>
 
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ $jumlahPembayaran }}</div>
+                                {{-- <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. {{ $jumlahPembayaran }}</div> --}}
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -44,7 +44,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Jumlah Siswa </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahSiswa }}</div>
+                                {{-- <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahSiswa }}</div> --}}
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -62,7 +62,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Jumlah Petugas</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahPengguna }}</div>
+                                {{-- <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahPengguna }}</div> --}}
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -80,7 +80,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Jumlah Kelas</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahKelas }}</div>
+                                {{-- <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $jumlahKelas }}</div> --}}
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x text-gray-300"></i>

@@ -14,17 +14,6 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     if (Auth::user()->level == 'admin') {
-        //         $adminName = Auth::user()->name;
-        //         return redirect()->route('main-page')->with('success', "Anda Berhasil Login. Selamat Datang $adminName.");
-        //     } else {
-        //         return redirect()->route('other-page');
-        //     }
-        // }
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -35,17 +24,12 @@ class AuthController extends Controller
                 return redirect()->route('main-page')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
             } elseif ($userLevel == 'bendahara') {
                 return redirect()->route('bendahara-page')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
+            } elseif ($userLevel == 'kepsek') {
+                return redirect()->route('kepsek-page')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
             } else {
-                return redirect()->route('main-page')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
+                return redirect()->route('home')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
             }
         }
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     $userName = Auth::user()->name;
-        //     return redirect()->route('main-page')->with('success', "Anda Berhasil Login. Selamat Datang $userName.");
-        // }
 
         return redirect()->route('login')->withErrors([
             'email' => 'The provided credentials do not match our records.',

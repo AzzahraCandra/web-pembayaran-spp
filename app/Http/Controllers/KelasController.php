@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Kelas;
-use Illuminate\Http\Request;
 
+use App\Exports\KelasExport;
+use App\Imports\KelasImport;
+use App\Models\Kelas;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KelasController extends Controller
 {
@@ -15,6 +19,33 @@ class KelasController extends Controller
         });
 
         return view('Content.dashboard-kelas', compact('kelas'));
+    }
+
+    public function kelasexport()
+    {
+        return Excel::download(new KelasExport, 'data-kelas.xlsx');
+    }
+
+    public function kelasimport(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv',
+        ]);
+
+        try {
+            Excel::import(new KelasImport(), $request->file('file'));
+
+            return redirect()->back()->with('success', 'Data Kelas berhasil diimpor.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+
+    public function cetakkelas()
+    {
+        $kelas = Kelas::get();
+        $pdf = PDF::loadView('pdf.print-kelas', compact('kelas'));
+        return $pdf->stream();
     }
 
     public function create()

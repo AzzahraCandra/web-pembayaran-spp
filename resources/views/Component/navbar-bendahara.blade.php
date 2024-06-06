@@ -34,19 +34,12 @@
             <span>Transaksi Pembayaran</span></a>
     </li>
 
-    {{-- <!-- Nav Item - Tunggakan -->
+    <!-- Nav Item - Tunggakan
     <li class="nav-item">
-        <a class="nav-link" href="history-pembayaran">
+        <a class="nav-link" href="tunggakan">
             <i class="fas fa-fw fa-receipt"></i>
-            <span>History Pembayaran</span></a>
-    </li> --}}
-
-    <!-- Nav Item - Data pembayaran -->
-    <li class="nav-item">
-        <a class="nav-link" href="dashboard-spp">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Data SPP</span></a>
-    </li>
+            <span>Transaksi Tunggakan</span></a>
+    </li> -->
 
     <!-- Nav Item - History Pembayaran -->
     <li class="nav-item">
@@ -54,38 +47,7 @@
             <i class="fas fa-fw fa-history"></i>
             <span>History Pembayaran</span></a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Kelola Data
-    </div>
-
-    <!-- Nav Item - Data Siswa -->
-    <li class="nav-item">
-        <a class="nav-link" href="dashboard-siswa">
-            <i class="fas fa-fw fa-user-graduate"></i>
-            <span>Data Siswa</span></a>
-    </li>
-
-    <!-- Nav Item - Data Kelas -->
-    <li class="nav-item">
-        <a class="nav-link" href="dashboard-kelas">
-            <i class="fas fa-fw fa-th"></i>
-            <span>Data Kelas</span></a>
-    </li>
-
-    <!-- Nav Item - Data Petugas -->
-    <li class="nav-item">
-        <a class="nav-link" href="dashboard-pengguna">
-            <i class="fas fa-fw fa-user-friends"></i>
-            <span>Data Pengguna</span></a>
-    </li>
-
-
-
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -136,8 +98,8 @@
                     </div>
                 </li>
 
-                <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
+               <!-- Nav Item - User Information -->
+               <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
