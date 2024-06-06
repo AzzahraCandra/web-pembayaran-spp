@@ -1,3 +1,13 @@
+<h2 align="center">Website pengelolaan SPP SMA PGRI 3 BANDUNG dirancang untuk mengelola administrasi sekolah, yang di dalamnya termasuk pembayaran Sumbangan Pembinaan Pendidikan (SPP).</h2>
+<p align="center">Website pengelolaan SPP SMA PGRI 3 BANDUNG dibuat untuk memenuhi tugas akhir mata kuliah ISB-310 SISTEM INFORMASI BERBASIS WEB menggunakan framework Laravel dan database SQL.</p>
+
+Project ini dikerjakan oleh 3 anggota:<br>
+162021008 SABRINA AZIZA UTAMI<br>
+162021024 AZZAHRA CANDRA PUTRI<br>
+162021031 TRI RAHAYU PURWANTI<br>
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
